@@ -52,7 +52,7 @@ describe("SignupForm", () => {
       );
     });
 
-    it("should be required else render required validation error", async () => {
+    it("should be required else render required error message", async () => {
       const { getByRole, container } = render(
         <SignupForm onSubmit={() => {}} />
       );
@@ -111,7 +111,7 @@ describe("SignupForm", () => {
       const { getByRole, container } = render(
         <SignupForm onSubmit={() => {}} />
       );
-      const button = screen.getByRole("button", { name: /Signup */i });
+      const button = getByRole("button", { name: /Signup */i });
       const passwordInput = screen.getByPlaceholderText(/Password/i);
       await act(async () => {
         fireEvent.change(passwordInput, { target: { value: "123" } });

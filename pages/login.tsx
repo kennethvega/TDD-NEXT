@@ -1,16 +1,12 @@
-import SignupForm from "@/components/signupForm/SignupForm";
+import LoginForm from "@/components/loginForm/LoginForm";
 import Card from "@/components/utility/card/Card";
 import GoogleSignin from "@/components/utility/googleSignin/GoogleSignin";
 import Link from "next/link";
 import React from "react";
-import { FieldValues, SubmitHandler } from "react-hook-form";
 
-const signup = () => {
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const { email, password, displayName } = data;
-    // await signUp(email, password, displayName);
-    console.log(data);
-  };
+const login = () => {
+  const onSubmit = () => {};
+
   // google sign in
   const handleGoogleSignIn = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -28,8 +24,7 @@ const signup = () => {
   return (
     <div className="mt-3 p-3">
       <Card>
-        <h2 className="mb-5 font-bold text-2xl text-green">Signup</h2>
-        <SignupForm onSubmit={onSubmit} />
+        <LoginForm onSubmit={onSubmit} />
         <GoogleSignin handleGoogleSignIn={handleGoogleSignIn} />
       </Card>
 
@@ -38,7 +33,7 @@ const signup = () => {
           <p className="text-center">
             Already have an account ?
             <span className="font-bold text-green">
-              <Link href="/login">Login</Link>
+              <Link href="/signup">Signup</Link>
             </span>
           </p>
         </Card>
@@ -47,4 +42,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default login;

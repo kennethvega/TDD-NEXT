@@ -27,15 +27,15 @@ const Button = ({
       className={classNames(
         {
           "bg-green hover:bg-green2 py-2 px-5 rounded-md text-white w-full transition-all duration-300 flex  justify-center":
-            variant === "primary",
+            !disabled && variant === "primary",
         },
         {
           "bg-red hover:bg-red2 py-2 px-5 rounded-md text-white w-full transition-all duration-300 flex  justify-center":
-            variant === "secondary",
+            !disabled && variant === "secondary",
         },
         {
-          "bg-green hover:bg-green2  py-2 px-5 rounded-md text-white w-full transition-all duration-300 flex  justify-center":
-            variant === undefined,
+          "bg-green opacity-50  py-2 px-5 rounded-md text-white w-full transition-all duration-300 flex cursor-not-allowed justify-center":
+            disabled,
         }
       )}
     >

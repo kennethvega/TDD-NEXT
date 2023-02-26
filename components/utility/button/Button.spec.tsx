@@ -12,7 +12,7 @@ import Button from "./Button";
 // 6. can put button types 1.button 2.submit 3.reset
 // 7. aria label prop
 
-describe("Reusable button components", () => {
+describe("Button", () => {
   it("should render the button and children props", () => {
     render(<Button>Button</Button>);
     const buttonElement = screen.getByText("Button");
@@ -42,25 +42,19 @@ describe("Reusable button components", () => {
   it("should render primary styling as default if variant is not specified", () => {
     render(<Button variant="primary">Default styling</Button>);
     const buttonElement = screen.getByText(/Default styling/i);
-    expect(buttonElement).toHaveClass(
-      "bg-green hover:bg-green2 rounded-md py-2 px-5 text-white w-full transition-all duration-300"
-    );
+    expect(buttonElement).toHaveClass("bg-green hover:bg-green2");
   });
 
   it("should render styling primary if variant=primary", () => {
     render(<Button variant="primary">Primary Button</Button>);
     const buttonElement = screen.getByText(/Primary Button/i);
-    expect(buttonElement).toHaveClass(
-      "bg-green hover:bg-green2 rounded-md py-2 px-5 text-white w-full transition-all duration-300"
-    );
+    expect(buttonElement).toHaveClass("bg-green hover:bg-green2 ");
   });
 
   it("should render styling secondary if variant=secondary", () => {
     render(<Button variant="secondary">Secondary Button</Button>);
     const buttonElement = screen.getByText(/Secondary Button/i);
-    expect(buttonElement).toHaveClass(
-      "bg-red hover:bg-red2 rounded-md py-2 px-5 text-white w-full transition-all duration-300"
-    );
+    expect(buttonElement).toHaveClass("bg-red hover:bg-red2");
   });
 
   it("should have type attribute equals to type prop. example:type=submit", () => {

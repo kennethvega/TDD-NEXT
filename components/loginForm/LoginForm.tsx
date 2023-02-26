@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import classNames from "classnames";
-import { FcGoogle } from "react-icons/fc";
-import { MdOutlineError } from "react-icons/md";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "../utility/button/Button";
-import Spinner from "../utility/spinner/Spinner";
+import classNames from "classnames";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Error from "../utility/error/Error";
+import { MdOutlineError } from "react-icons/md";
+import Spinner from "../utility/spinner/Spinner";
 
-type SignupFormProps = {
+type LoginFormProps = {
   onSubmit: SubmitHandler<FieldValues>;
   error?: any;
   isPending?: boolean;
 };
 
-const SignupForm = ({ onSubmit, error, isPending }: SignupFormProps) => {
+const LoginForm = ({ onSubmit, error, isPending }: LoginFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
-  // const isPending = false;
   const {
     register,
     handleSubmit,
@@ -24,31 +22,6 @@ const SignupForm = ({ onSubmit, error, isPending }: SignupFormProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-[20rem] ">
-      <label
-        htmlFor="displayName"
-        className={classNames({ "text-red": errors.displayName })}
-      >
-        {errors.displayName
-          ? errors.displayName.message?.toString()
-          : "Display name"}
-      </label>
-      <input
-        id="displayName"
-        {...register("displayName", {
-          required: "Display name is required",
-          minLength: {
-            value: 3,
-            message: "Display name must be at least 3 characters",
-          },
-        })}
-        type="text"
-        placeholder="Display name"
-        className={classNames("mb-3 mt-1", {
-          "input-error": errors.displayName,
-          input: !errors.displayName,
-        })}
-      />
-
       <label
         htmlFor="email"
         className={classNames({ "text-red": errors.email })}
@@ -115,20 +88,20 @@ const SignupForm = ({ onSubmit, error, isPending }: SignupFormProps) => {
       )}
       {/* Graphql Errors */}
       {/* {createUserResult?.error && (
-        <Error>
-          <>
-            <MdOutlineError size={23} />
-            {createUserResult.error}
-          </>
-        </Error>
-      )} */}
+      <Error>
+        <>
+          <MdOutlineError size={23} />
+          {createUserResult.error}
+        </>
+      </Error>
+    )} */}
       <div className="mt-5">
         <Button disabled={isPending} variant="primary">
-          {isPending ? <Spinner /> : "Signup"}
+          {isPending ? <Spinner /> : "Login"}
         </Button>
       </div>
     </form>
   );
 };
 
-export default SignupForm;
+export default LoginForm;
